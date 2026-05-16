@@ -24,22 +24,28 @@ function getMonsterManualLabel () {
     ) ? "MM" : "Monster Maker";
 }
 
-Hooks.on("renderActorSheet", async function (sheet, html) {
-    let actor = sheet.object
+function injectMonsterMakerButton(sheet, html) {
+    let actor = sheet.object ?? sheet.document
     if (actor?.type !== "npc") {
         return;
     }
     if(!actor.canUserModify(game["user"], "update")) {
         return;
     }
-    let element = html.find(".window-header .window-title");
+    const $html = (html instanceof HTMLElement) ? $(html.closest(".application") ?? html) : html;
+    let element = $html.find(".window-header .window-title");
+    if (!element.length) return;
+    if (element.parent().find("a.monster-maker-button").length) return;
     let label = getMonsterManualLabel()
-    let button = $(`<a class="popout" style><i style="padding: 0 4px;" class="fas fa-book"></i>${label}</a>`);
+    let button = $(`<a class="popout monster-maker-button"><i style="padding: 0; margin-right: 2px;" class="fas fa-book"></i>${label}</a>`);
     button.on("click", () => {
-        new MonsterMaker(actor).render(true)
+        new (MonsterMaker as any)(actor).render(true)
     })
     element.after(button);
-})
+}
+
+Hooks.on("renderActorSheet", injectMonsterMakerButton)
+Hooks.on("renderActorSheetV2", injectMonsterMakerButton)
 
 Hooks.on("renderActorDirectory", function() {
     let footer = $("#actors .directory-footer.action-buttons");
@@ -48,15 +54,7 @@ Hooks.on("renderActorDirectory", function() {
         footer.append(monsterButton);
 
         monsterButton.on("click", function() {
-            let monsterData = {
-                name: "Monster",
-                type: "npc",
-            };
-            Actor.create(monsterData).then(actor => {
-                if (actor) {
-                    new MonsterMaker(actor).render(true);
-                }
-            });
+            new (MonsterMaker as any)().render(true);
         });
     }
 });

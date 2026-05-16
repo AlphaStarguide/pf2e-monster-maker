@@ -27,6 +27,9 @@ export enum Statistics {
     strikeBonus = 'PF2EMONSTERMAKER.strikeBonus',
     strikeDamage = 'PF2EMONSTERMAKER.strikeDamage',
     spellcasting = 'PF2EMONSTERMAKER.spellcasting',
+    areaDC = 'PF2EMONSTERMAKER.areaDC',
+    unlimitedUseAreaDamage = 'PF2EMONSTERMAKER.unlimitedUseAreaDamage',
+    limitedUseAreaDamage = 'PF2EMONSTERMAKER.limitedUseAreaDamage',
 
     // Skills
     acrobatics = 'PF2EMONSTERMAKER.acrobatics',
@@ -82,6 +85,7 @@ export enum Options {
     terrible = 'PF2EMONSTERMAKER.terrible',
     abysmal = "PF2EMONSTERMAKER.abysmal",
     none = 'PF2EMONSTERMAKER.none',
+    yes = 'PF2EMONSTERMAKER.yes',
 }
 
 export const RoadMaps = {
@@ -122,6 +126,7 @@ export const RoadMaps = {
 export class CreatureStatistic {
     name: string;
     availableOptions?: Options[];
+    defaultValue?: Options;
 }
 
 export class CreatureStatisticCategory {
@@ -185,7 +190,7 @@ export const DefaultCreatureStatistics: CreatureStatisticCategory[] = [
         ]
     },
     {
-        name: 'PF2EMONSTERMAKER.strikes',
+        name: 'PF2EMONSTERMAKER.strikesAndAreaDamage',
         availableOptions: [Options.low, Options.moderate, Options.high, Options.extreme],
         defaultValue: Options.moderate,
         statisticEntries: [
@@ -194,7 +199,23 @@ export const DefaultCreatureStatistics: CreatureStatisticCategory[] = [
             },
             {
                 name: Statistics.strikeDamage,
-            }]
+            },
+            {
+                name: Statistics.areaDC,
+                availableOptions: [Options.none, Options.moderate, Options.high, Options.extreme],
+                defaultValue: Options.none,
+            },
+            {
+                name: Statistics.unlimitedUseAreaDamage,
+                availableOptions: [Options.none, Options.yes],
+                defaultValue: Options.none,
+            },
+            {
+                name: Statistics.limitedUseAreaDamage,
+                availableOptions: [Options.none, Options.yes],
+                defaultValue: Options.none,
+            },
+        ]
     },
     {
         name: Statistics.spellcasting,

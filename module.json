@@ -1,51 +1,68 @@
 {
-    "id": "pf2e-monster-maker",
-    "name": "pf2e-monster-maker",
-    "title": "PF2E Monster Maker",
-    "description": "A module that allows you to make an NPC/Monster from scratch using Creature Building Rules. To use create a new NPC sheet and use the Monster Maker button located in top-right corner of the sheet.",
-    "version": "REPLACED AUTOMATICALLY",
-    "authors": [{"name": "miki4920"}],
-    "minimumCoreVersion": "13",
-    "compatibleCoreVersion": "13",
-    "compatibility": {
-        "minimum": 13,
-        "verified": "13.345",
-        "maximum": 13
+  "id": "pf2e-monster-maker",
+  "name": "pf2e-monster-maker",
+  "title": "PF2E Monster Maker",
+  "description": "<p>A module that allows you to make an NPC/Monster from scratch using Creature Building Rules. To use create a new NPC sheet and use the Monster Maker button located in top-right corner of the sheet.</p>",
+  "version": "REPLACED AUTOMATICALLY",
+  "authors": [
+    {
+      "name": "miki4920",
+      "flags": {}
+    }
+  ],
+  "minimumCoreVersion": "13",
+  "compatibleCoreVersion": "14",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.360",
+    "maximum": "14"
+  },
+  "scripts": [
+    "dist/bundle.js"
+  ],
+  "styles": [
+    {
+      "src": "dist/styles/module.css"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "dist/languages/en.json",
+      "flags": {}
     },
-    "scripts": ["dist/bundle.js"],
-    "styles": [
-        "dist/styles/module.css"
-    ],
-    "languages": [
-        {
-            "lang": "en",
-            "name": "English",
-            "path": "dist/languages/en.json"
-        },
-        {
-            "lang": "zh-tw",
-            "name": "正體中文",
-            "path": "dist/languages/zh-tw.json"
-        },
-        {
-            "lang": "cn",
-            "name": "简体中文",
-            "path": "dist/languages/cn.json"
-        },
-        {
-            "lang": "pl",
-            "name": "Polski",
-            "path": "dist/languages/pl.json"
-        }
-    ],
-    "relationships": {
-        "systems": [{
-            "id": "pf2e",
-            "type": "system",
-            "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json"
-        }]
+    {
+      "lang": "zh-tw",
+      "name": "正體中文",
+      "path": "dist/languages/zh-tw.json",
+      "flags": {}
     },
-    "url": "https://github.com/miki4920/foundryvtt-pf2e-monster-maker",
-    "manifest": "https://github.com/miki4920/foundryvtt-pf2e-monster-maker/releases/latest/download/module.json",
-    "download": "https://github.com/miki4920/foundryvtt-pf2e-monster-maker/releases/latest/download/module.zip"
+    {
+      "lang": "cn",
+      "name": "简体中文",
+      "path": "dist/languages/cn.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Polski",
+      "path": "dist/languages/pl.json",
+      "flags": {}
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json",
+        "compatibility": {}
+      }
+    ]
+  },
+  "url": "https://github.com/miki4920/foundryvtt-pf2e-monster-maker",
+  "manifest": "https://github.com/miki4920/foundryvtt-pf2e-monster-maker/releases/latest/download/module.json",
+  "download": "https://github.com/miki4920/foundryvtt-pf2e-monster-maker/releases/latest/download/module.zip",
+  "flags": {}
 }

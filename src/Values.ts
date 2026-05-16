@@ -1,6 +1,6 @@
 import {Options, Statistics} from "./Keys";
 
-const aliases = {
+export const aliases = {
     abilityScores: {
         "-1": {
             [Options.extreme]: "4",
@@ -1133,6 +1133,34 @@ const aliases = {
             [Options.moderate]: "37",
         }
     },
+    areaDamage: {
+        "-1": { unlimited: "1d4", limited: "1d6" },
+        "0": { unlimited: "1d6", limited: "1d10" },
+        "1": { unlimited: "2d4", limited: "2d6" },
+        "2": { unlimited: "2d6", limited: "3d6" },
+        "3": { unlimited: "2d8", limited: "4d6" },
+        "4": { unlimited: "3d6", limited: "5d6" },
+        "5": { unlimited: "2d10", limited: "6d6" },
+        "6": { unlimited: "4d6", limited: "7d6" },
+        "7": { unlimited: "4d6", limited: "8d6" },
+        "8": { unlimited: "5d6", limited: "9d6" },
+        "9": { unlimited: "5d6", limited: "10d6" },
+        "10": { unlimited: "6d6", limited: "11d6" },
+        "11": { unlimited: "6d6", limited: "12d6" },
+        "12": { unlimited: "5d8", limited: "13d6" },
+        "13": { unlimited: "7d6", limited: "14d6" },
+        "14": { unlimited: "4d12", limited: "15d6" },
+        "15": { unlimited: "6d8", limited: "16d6" },
+        "16": { unlimited: "8d6", limited: "17d6" },
+        "17": { unlimited: "8d6", limited: "18d6" },
+        "18": { unlimited: "9d6", limited: "19d6" },
+        "19": { unlimited: "7d8", limited: "20d6" },
+        "20": { unlimited: "6d10", limited: "21d6" },
+        "21": { unlimited: "10d6", limited: "22d6" },
+        "22": { unlimited: "8d8", limited: "23d6" },
+        "23": { unlimited: "11d6", limited: "24d6" },
+        "24": { unlimited: "11d6", limited: "25d6" },
+    },
     skills: {
         "-1": {
             [Options.extreme]: "8",
@@ -1340,6 +1368,7 @@ export const statisticValues = {
     [Statistics.strikeBonus]: aliases.strikeBonus,
     [Statistics.strikeDamage]: aliases.strikeDamage,
     [Statistics.spellcasting]: aliases.spellcasting,
+    [Statistics.areaDC]: aliases.spellcasting,
 
     [Statistics.acrobatics]: aliases.skills,
     [Statistics.arcana]: aliases.skills,

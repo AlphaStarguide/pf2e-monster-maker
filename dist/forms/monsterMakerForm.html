@@ -1,90 +1,95 @@
-<form>
-    <h1>{{localize "PF2EMONSTERMAKER.title"}}</h1>
-    <h2>{{localize "PF2EMONSTERMAKER.nameLevelRoadmap"}}</h2>
-    <div class="form-group setting">
-        <label for="monsterMakerName" class="monsterMakerFormText">
-            {{localize "PF2EMONSTERMAKER.name"}}
-        </label>
-        <input id="monsterMakerName" name="PF2EMONSTERMAKER.name" placeholder="{{name}}" class="monsterMakerFormText">
-    </div>
-    <div class="form-group setting">
-        <label for="monsterMakerLevel" class="monsterMakerFormText">
-            {{localize "PF2EMONSTERMAKER.level"}}
-        </label>
-        <select name="PF2EMONSTERMAKER.level" id="monsterMakerLevel" class="monsterMakerFormTextSmall">
-            {{#each Levels}}
-                <option value={{this}}>{{this}}</option>
-            {{/each}}
-        </select>
-    </div>
-    <div class="form-group setting">
-        <label for="monsterMakerRoadmap" class="monsterMakerFormText">
-            {{localize "PF2EMONSTERMAKER.roadmap"}}
-        </label>
-        <select id="monsterMakerRoadmap" class="monsterMakerFormTextSmall" onchange=setRoadmap(this)>
-            <option value="Default" selected>Default</option>
-            {{#each RoadMaps}}
-                <option value="{{@key}}">{{localize @key}}</option>
-            {{/each}}
-        </select>
-    </div>
-    {{#each CreatureStatistics}}
-        <h3>{{localize this.name}}</h3>
-        {{#each this.statisticEntries}}
-            <div class="form-group setting">
-                <label for="{{concat 'monsterMaker' this.name}}" class="monsterMakerFormText">
-                    {{localize this.name}}
-                </label>
-                <select id="{{concat 'monsterMaker' this.name}}" name="{{this.name}}" class="monsterMakerFormTextSmall">
-                    {{#if this.availableOptions}}
-                        {{#each this.availableOptions}}
-                            <option value="{{this}}">
-                                {{localize this}}
-                            </option>
+<div class="monster-maker-root">
+    <div class="monster-maker-body">
+        <section class="monster-maker-category">
+            <h3 class="monster-maker-category-header">
+                <i class="fa-solid fa-caret-down"></i>
+                {{localize "PF2EMONSTERMAKER.nameLevelRoadmap"}}
+            </h3>
+            <div class="monster-maker-category-body">
+                <div class="form-group setting">
+                    <label for="monsterMakerName" class="monsterMakerFormText">
+                        {{localize "PF2EMONSTERMAKER.name"}}
+                    </label>
+                    <input type="text" id="monsterMakerName" name="PF2EMONSTERMAKER.name" placeholder="{{name}}" class="monsterMakerFormTextSmall">
+                </div>
+                <div class="form-group setting">
+                    <label for="monsterMakerLevel" class="monsterMakerFormText">
+                        {{localize "PF2EMONSTERMAKER.level"}}
+                    </label>
+                    <select name="PF2EMONSTERMAKER.level" id="monsterMakerLevel" class="monsterMakerFormTextSmall">
+                        {{#each Levels}}
+                            <option value={{this}}>{{this}}</option>
                         {{/each}}
-                    {{/if}}
-                    {{#unless this.availableOptions}}
-                        {{#each ../this.availableOptions}}
-                            <option value="{{this}}">
-                                {{localize this}}
-                            </option>
+                    </select>
+                </div>
+                <div class="form-group setting">
+                    <label for="monsterMakerRoadmap" class="monsterMakerFormText">
+                        {{localize "PF2EMONSTERMAKER.roadmap"}}
+                    </label>
+                    <select id="monsterMakerRoadmap" class="monsterMakerFormTextSmall">
+                        <option value="Default" selected>Default</option>
+                        {{#each RoadMaps}}
+                            <option value="{{@key}}">{{localize @key}}</option>
                         {{/each}}
-                    {{/unless}}
-                </select>
+                    </select>
+                </div>
             </div>
+        </section>
+        {{#each CreatureStatistics}}
+            <section class="monster-maker-category">
+                <h3 class="monster-maker-category-header">
+                    <i class="fa-solid fa-caret-down"></i>
+                    {{localize this.name}}
+                </h3>
+                <div class="monster-maker-category-body">
+                    {{#each this.statisticEntries}}
+                        <div class="form-group setting">
+                            <label for="{{concat 'monsterMaker' this.name}}" class="monsterMakerFormText">
+                                {{#if this.label}}{{this.label}}{{else}}{{localize this.name}}{{/if}}
+                            </label>
+                            <select id="{{concat 'monsterMaker' this.name}}" name="{{this.name}}" class="monsterMakerFormTextSmall">
+                                {{#if this.availableOptions}}
+                                    {{#each this.availableOptions}}
+                                        <option value="{{this}}">
+                                            {{localize this}}
+                                        </option>
+                                    {{/each}}
+                                {{/if}}
+                                {{#unless this.availableOptions}}
+                                    {{#each ../this.availableOptions}}
+                                        <option value="{{this}}">
+                                            {{localize this}}
+                                        </option>
+                                    {{/each}}
+                                {{/unless}}
+                            </select>
+                        </div>
+                    {{/each}}
+                </div>
+            </section>
         {{/each}}
-
-    {{/each}}
-    <div class="buttons">
-        <button type="submit" id="monsterMakerFormSubmit">Submit</button>
+        <section class="monster-maker-category collapsed" id="loreSkillsSection">
+            <h3 class="monster-maker-category-header">
+                <i class="fa-solid fa-caret-down"></i>
+                Lore Skills
+            </h3>
+            <div class="monster-maker-category-body">
+                <div class="form-group setting lore-add-row">
+                    <label for="monsterMakerLoreName" class="monsterMakerFormText">Lore</label>
+                    <div class="form-fields lore-add-controls">
+                        <input type="text" id="monsterMakerLoreName" class="monsterMakerFormTextSmall">
+                        <button type="button" id="monsterMakerLoreAdd" class="lore-add-button" title="Add">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="monsterMakerLoreList" class="lore-list"></div>
+            </div>
+        </section>
     </div>
-
-</form>
-<script>
-    monsterCreatureStatistics = {{{json CreatureStatistics}}}
-    monsterCreatureRoadmaps = {{{json RoadMaps}}}
-    function setDefaults() {
-        for (const category of monsterCreatureStatistics) {
-            for (const statistic of category.statisticEntries) {
-                let element = document.getElementById("monsterMaker" + statistic.name)
-                if (element) {
-                    element.value = category.defaultValue;
-                }
-            }
-        }
-    }
-    function setRoadmap(selectedRoadmap) {
-        let roadmapValue = selectedRoadmap.value;
-        setDefaults();
-        if(monsterCreatureRoadmaps[roadmapValue]) {
-            let roadmap = monsterCreatureRoadmaps[roadmapValue]
-            for (const [key, value] of Object.entries(roadmap)) {
-                let select = document.getElementById("monsterMaker" + key)
-                if(select) {
-                    select.value = value
-                }
-            }
-        }
-    }
-    setDefaults();
-</script>
+    <footer class="form-footer">
+        <button type="submit" id="monsterMakerFormSubmit">
+            <i class="fa-solid fa-check"></i> Create
+        </button>
+    </footer>
+</div>

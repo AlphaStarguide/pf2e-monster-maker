@@ -1,17 +1,154 @@
-#monsterMakerForm form{
-    display: flex;
-    flex-direction: column;
+.application.monster-maker {
+    --form-field-height: 30px;
 }
 
-#monsterMakerForm .monsterMakerFormText {
+.window-header .monster-maker-button {
+    padding: 0;
+}
+
+.application.monster-maker .window-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.application.monster-maker .monster-maker-root {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.application.monster-maker .monster-maker-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.application.monster-maker .monsterMakerFormText {
     font-size: 16px;
 }
 
-#monsterMakerForm .monsterMakerFormTextSmall {
+.application.monster-maker .monsterMakerFormTextSmall {
     font-size: 15px;
 }
 
-#monsterMakerForm label {
+.application.monster-maker label {
     font-size: 16px;
 }
 
+.application.monster-maker .monster-maker-category-header {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.application.monster-maker .monster-maker-category-header i {
+    font-size: 0.85em;
+    transition: transform 0.15s ease;
+}
+
+.application.monster-maker .monster-maker-category.collapsed .monster-maker-category-header i {
+    transform: rotate(-90deg);
+}
+
+.application.monster-maker .monster-maker-category.collapsed .monster-maker-category-body {
+    display: none;
+}
+
+.application.monster-maker .monster-maker-category-body input,
+.application.monster-maker .monster-maker-category-body select {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.application.monster-maker .mm-dropdown-trigger {
+    cursor: pointer;
+}
+
+.application.monster-maker .mm-dropdown-popup[data-for="monsterMakerLevel"] {
+    max-height: 480px;
+}
+
+.application.monster-maker .mm-dropdown-popup {
+    position: fixed;
+    z-index: calc(var(--z-index-tooltip, 9999) + 1);
+    list-style: none;
+    margin: 0;
+    padding: 2px;
+    max-height: 260px;
+    overflow-y: auto;
+    font: inherit;
+    color: var(--color-light-1, #e0e0e0);
+    background: var(--color-cool-5, #324053);
+    border: 1px solid var(--color-cool-3, #5685cf);
+    border-radius: var(--input-border-radius, 3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.application.monster-maker .mm-dropdown-option {
+    padding: 7px 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 2px;
+    user-select: none;
+    font-size: 15px;
+}
+
+.application.monster-maker .mm-dropdown-option:hover {
+    background: var(--color-cool-4, #475a86);
+    color: var(--color-light-1, #ffffff);
+}
+
+.application.monster-maker .mm-dropdown-option.selected {
+    background: var(--color-cool-3, #5685cf);
+    color: var(--color-light-1, #ffffff);
+    font-weight: bold;
+}
+
+.application.monster-maker .lore-add-controls,
+.application.monster-maker .lore-row-controls {
+    gap: 4px;
+    align-items: center;
+    min-width: 0;
+}
+
+.application.monster-maker .lore-add-controls > input,
+.application.monster-maker .lore-row-controls > select {
+    flex: 1;
+    min-width: 0;
+}
+
+.application.monster-maker .lore-add-button,
+.application.monster-maker .lore-remove {
+    flex: 0 0 auto;
+    height: var(--form-field-height);
+    width: var(--form-field-height);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.application.monster-maker .lore-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.application.monster-maker .form-footer {
+    display: flex;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+    padding: 8px;
+    border-top: 1px solid var(--color-cool-4, rgba(0, 0, 0, 0.2));
+    background: inherit;
+}
